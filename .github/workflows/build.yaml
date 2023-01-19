@@ -15,8 +15,16 @@ jobs:
           cache: true
       - name: Build
         run: make all
+      # - name: Release
+      #   uses: softprops/action-gh-release@v1
+      #   with:
+      #     files: bin/*
+      #     draft: true
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: svenstaro/upload-release-action@v2
         with:
-          files: bin/*
-          draft: true
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ env.TAG_NAME }}
+          file: bin/*
+          file_glob: true
+          prerelease: true
