@@ -3,11 +3,11 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - Alpha
+      # - Alpha
       - Beta
   pull_request_target:
     branches:
-      - Alpha
+      # - Alpha
       - Beta
 jobs:
   Build:

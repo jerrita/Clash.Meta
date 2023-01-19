@@ -1,6 +1,9 @@
 name: Build All
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - Alpha
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,7 +27,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ env.TAG_NAME }}
+          tag: alpha
           file: bin/*
           file_glob: true
           prerelease: true
