@@ -43,7 +43,7 @@ WINDOWS_ARCH_LIST = \
 	windows-arm64 \
     windows-arm32v7
 
-all:linux-amd64 linux-arm64\
+all:linux-amd64 linux-arm64 linux-riscv64\
 	darwin-amd64 darwin-arm64\
  	windows-amd64 windows-arm64\
 
@@ -100,6 +100,9 @@ linux-mips64:
 
 linux-mips64le:
 	GOARCH=mips64le GOOS=linux $(GOBUILD) -o $(BINDIR)/$(NAME)-$@
+
+linux-riscv64:
+	GOARCH=riscv64 GOOS=linux $(GOBUILD) -o $(BINDIR)/$(NAME)-$@
 
 android-arm64:
 	GOARCH=arm64 GOOS=android $(GOBUILD) -o $(BINDIR)/$(NAME)-$@
